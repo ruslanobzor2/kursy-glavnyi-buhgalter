@@ -6,27 +6,334 @@
     <title>Зарплата главного бухгалтера в 2026 году | Доходы по городам</title>
     <meta name="description" content="Сколько зарабатывает главный бухгалтер в 2026 году: средние зарплаты по городам, факторы влияния, динамика. Данные для Москвы, регионов.">
     <style>
-    /* тот же CSS, что в duties.html (полный, но для краткости я его не повторяю – просто скопируй весь блок style из duties.html и вставь сюда) */
-    body { font-family: 'Inter',... } /* ...нужно скопировать весь стиль из duties.html, но чтобы не ошибиться, я дам готовый файл в конце сообщения. Пока что используй тот же стиль. */
+    /* ===== БАЗОВЫЕ СТИЛИ (полностью скопированы из основной страницы) ===== */
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f8fafc;
+        color: #1e293b;
+        line-height: 1.6;
+        padding: 40px 20px;
+        margin: 0;
+    }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 24px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+    }
+    .hero-section {
+        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        border-radius: 24px;
+        padding: 60px 40px;
+        margin-bottom: 40px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        color: white;
+    }
+    .hero-badge {
+        display: inline-block;
+        background: #3b82f6;
+        padding: 6px 16px;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    .hero-section h1 {
+        color: #ffffff !important;
+        font-size: 2.8rem;
+        margin: 0;
+        border: none !important;
+    }
+    .hero-subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        margin-top: 15px;
+    }
+    .category-divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin: 60px 0 30px;
+        padding: 15px 25px;
+        background: #f1f5f9;
+        border-radius: 12px;
+        border-left: 5px solid #3b82f6;
+    }
+    .category-divider h2 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: #1e293b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none !important;
+    }
+    .course-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 30px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+    }
+    .course-card:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.08);
+    }
+    .course-card h2 {
+        color: #1e293b;
+        font-size: 1.4rem;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .criteria-card {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 25px;
+        border: 1px solid #e2e8f0;
+        display: flex;
+        gap: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .criteria-card:hover {
+        transform: scale(1.01);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+    .criteria-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 6px;
+    }
+    .card-blue::before { background: #3b82f6; }
+    .card-red::before { background: #ef4444; }
+    .card-green::before { background: #10b981; }
+    .card-orange::before { background: #f59e0b; }
+    .card-purple::before { background: #8b5cf6; }
+    .card-icon {
+        font-size: 2.5rem;
+        min-width: 60px;
+        height: 60px;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+    }
+    .card-content h2 {
+        margin: 0 0 12px 0;
+        font-size: 1.4rem;
+        color: #0f172a;
+    }
+    .card-content p {
+        margin: 0 0 15px 0;
+        color: #475569;
+        font-size: 1.05rem;
+    }
+    .card-content p:last-child { margin-bottom: 0; }
+    .intro-expert-block {
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        padding: 35px;
+        margin: 40px 0;
+        border-radius: 0 20px 20px 0;
+        position: relative;
+    }
+    .intro-expert-block::before {
+        content: "💡";
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        background: white;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .intro-expert-block p {
+        font-size: 1.15rem;
+        color: #334155;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+    .intro-expert-block p:last-child {
+        margin-bottom: 0;
+        font-style: normal;
+        font-weight: 600;
+        color: #1e293b;
+    }
+    @media (max-width: 768px) {
+        body { padding: 16px 12px; }
+        .container { padding: 20px 16px; border-radius: 20px; }
+        .hero-section { padding: 32px 20px; margin-bottom: 28px; }
+        .hero-section h1 { font-size: 1.9rem; line-height: 1.3; }
+        .hero-subtitle { font-size: 1rem; }
+        .intro-expert-block { padding: 24px 18px; margin: 28px 0; }
+        .intro-expert-block p { font-size: 1rem; }
+        .course-card { padding: 20px 18px; margin-bottom: 20px; }
+        .course-card h2 { font-size: 1.3rem; }
+        .criteria-card { flex-direction: column; gap: 12px; padding: 22px 18px; }
+        .card-icon { min-width: 48px; width: 48px; height: 48px; font-size: 1.8rem; }
+        .card-content h2 { font-size: 1.25rem; }
+        .card-content p { font-size: 0.95rem; }
+        .category-divider { margin: 40px 0 20px; padding: 12px 18px; gap: 10px; }
+        .category-divider h2 { font-size: 1.3rem; }
+        .site-footer { padding: 32px 20px 24px; margin-top: 40px; font-size: 0.85rem; }
+        .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+        .footer-copyright { text-align: center; }
+    }
+    .site-footer {
+        background: #f1f5f9;
+        border-radius: 20px;
+        margin-top: 60px;
+        padding: 40px 40px 30px;
+        border-top: 1px solid #e2e8f0;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    .footer-logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: #0f172a;
+        letter-spacing: -0.2px;
+    }
+    .footer-links {
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+    .footer-links a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: opacity 0.2s;
+    }
+    .footer-links a:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+    }
+    .footer-copyright {
+        font-size: 0.8rem;
+        color: #5b6e8c;
+        text-align: left;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 20px;
+        margin-top: 8px;
+    }
     </style>
 </head>
 <body>
-<div class="container">
-<div class="hero-section"><div class="hero-badge">Актуально 2026</div><h1>Зарплата главного бухгалтера в 2026 году</h1><p class="hero-subtitle">Сколько получают главбухи в Москве, регионах и в зависимости от опыта</p></div>
-<div style="text-align: center;"><img src="IMAGE 2026-04-05 23:50:50.jpg" alt="Зарплата бухгалтера" style="max-width: 80%; border-radius: 10px;"></div>
-<div class="intro-expert-block"><p>Зарплата главного бухгалтера сильно варьируется в зависимости от региона, размера компании, сложности бизнеса и личных компетенций. Мы собрали актуальные цифры 2026 года на основе открытых данных и вакансий.</p></div>
-<div class="category-divider"><span>💰</span> <h2>Средние зарплаты по городам</h2></div>
-<div class="course-card"><h2>Москва</h2><p>Диапазон: 120 000 – 350 000 ₽. Начинающие главбухи (до 2 лет) – 120-150 тыс. Опытные (3-5 лет) – 150-250 тыс. Топ-специалисты в крупных холдингах – до 350-400 тыс. Плюс годовые бонусы до 30-50% от оклада.</p></div>
-<div class="course-card"><h2>Санкт-Петербург</h2><p>Диапазон: 100 000 – 280 000 ₽. Средний уровень – 140-180 тыс. В крупных компаниях (финансовый сектор, международный бизнес) – до 280-300 тыс.</p></div>
-<div class="course-card"><h2>Екатеринбург, Новосибирск, Казань, Нижний Новгород</h2><p>Диапазон: 80 000 – 200 000 ₽. Среднее значение – 110-140 тыс. В крупных региональных холдингах – до 180-200 тыс.</p></div>
-<div class="course-card"><h2>Другие города (Краснодар, Ростов-на-Дону, Воронеж, Самара)</h2><p>Диапазон: 70 000 – 150 000 ₽. Средняя зарплата – 90-120 тыс. Рост наблюдается в компаниях, работающих с международным учётом.</p></div>
-<div class="category-divider"><span>📈</span> <h2>Факторы, влияющие на доход</h2></div>
-<div class="criteria-card"><div class="card-icon">🏢</div><div class="card-content"><h2>Размер и отрасль компании</h2><p>В малом бизнесе (до 15 сотрудников) главбух часто получает 60-80 тыс. рублей и совмещает обязанности кассира. В среднем бизнесе (50-250 сотрудников) – 100-150 тыс. В крупных корпорациях и холдингах – от 180 до 350 тыс. Самые высокие зарплаты – в банках, инвестиционных компаниях, международном ритейле и нефтегазе.</p></div></div>
-<div class="criteria-card"><div class="card-icon">🧠</div><div class="card-content"><h2>Опыт и квалификация</h2><p>Сертификаты (профбухгалтер, налоговый консультант), знание МСФО, опыт прохождения налоговых проверок и судебных споров увеличивают зарплату на 20-40%. Главбухи с опытом автоматизации и внедрения 1С стоят дороже.</p></div></div>
-<div class="criteria-card"><div class="card-icon">🌍</div><div class="card-content"><h2>Дополнительные обязанности</h2><p>Если главбух также отвечает за управленческий учёт, бюджетирование, финансовый анализ, зарплата выше на 30-50%. Владение английским (для международных компаний) даёт прибавку до 40%.</p></div></div>
-<div class="category-divider"><span>📊</span> <h2>Динамика зарплат</h2></div>
-<div class="course-card"><h2>Как менялись доходы за последние 3 года</h2><p>В 2024-2026 годах зарплаты главных бухгалтеров выросли в среднем на 18-22% из-за дефицита квалифицированных кадров и роста сложности законодательства. Особенно заметен рост в регионах – до 25-30%. Эксперты прогнозируют дальнейшее увеличение на 8-12% ежегодно.</p></div>
-<footer class="site-footer"><div class="footer-content"><div class="footer-logo">Главный бухгалтер | Рейтинг 2026</div><div class="footer-links"><a href="duties.html">Обязанности</a><a href="salaries.html">Зарплаты</a><a href="video.html">Видео</a><a href="contacts.html">Контакты</a></div></div><div class="footer-copyright">© 2026 Независимый рейтинг курсов главного бухгалтера. Все права защищены.</div></footer>
-</div>
+    <div class="container">
+        <div class="hero-section">
+            <div class="hero-badge">Актуально 2026</div>
+            <h1>Зарплата главного бухгалтера в 2026 году</h1>
+            <p class="hero-subtitle">Сколько получают главбухи в Москве, регионах и в зависимости от опыта</p>
+        </div>
+        <div style="text-align: center;">
+            <img src="IMAGE 2026-04-05 23:50:50.jpg" alt="Зарплата бухгалтера" style="max-width: 80%; border-radius: 10px;">
+        </div>
+        <div class="intro-expert-block">
+            <p>Зарплата главного бухгалтера сильно варьируется в зависимости от региона, размера компании, сложности бизнеса и личных компетенций. Мы собрали актуальные цифры 2026 года на основе открытых данных и вакансий.</p>
+        </div>
+
+        <div class="category-divider"><span>💰</span> <h2>Средние зарплаты по городам</h2></div>
+        <div class="course-card">
+            <h2>📍 Москва</h2>
+            <p><strong>Диапазон:</strong> 120 000 – 350 000 ₽.<br>
+            Начинающие (до 2 лет) – 120-150 тыс. Опытные (3-5 лет) – 150-250 тыс. Топ-специалисты в крупных холдингах – до 350-400 тыс. Плюс годовые бонусы до 30-50% от оклада.</p>
+        </div>
+        <div class="course-card">
+            <h2>📍 Санкт-Петербург</h2>
+            <p><strong>Диапазон:</strong> 100 000 – 280 000 ₽.<br>
+            Средний уровень – 140-180 тыс. В крупных компаниях (финансовый сектор, международный бизнес) – до 280-300 тыс.</p>
+        </div>
+        <div class="course-card">
+            <h2>📍 Екатеринбург, Новосибирск, Казань, Нижний Новгород</h2>
+            <p><strong>Диапазон:</strong> 80 000 – 200 000 ₽.<br>
+            Среднее значение – 110-140 тыс. В крупных региональных холдингах – до 180-200 тыс.</p>
+        </div>
+        <div class="course-card">
+            <h2>📍 Другие города (Краснодар, Ростов-на-Дону, Воронеж, Самара)</h2>
+            <p><strong>Диапазон:</strong> 70 000 – 150 000 ₽.<br>
+            Средняя зарплата – 90-120 тыс. Рост наблюдается в компаниях, работающих с международным учётом.</p>
+        </div>
+
+        <div class="category-divider"><span>📈</span> <h2>Факторы, влияющие на доход</h2></div>
+        <div class="criteria-card card-blue">
+            <div class="card-icon">🏢</div>
+            <div class="card-content">
+                <h2>Размер и отрасль компании</h2>
+                <p>В малом бизнесе (до 15 сотрудников) главбух часто получает 60-80 тыс. рублей и совмещает обязанности кассира. В среднем бизнесе (50-250 сотрудников) – 100-150 тыс. В крупных корпорациях и холдингах – от 180 до 350 тыс. Самые высокие зарплаты – в банках, инвестиционных компаниях, международном ритейле и нефтегазе.</p>
+            </div>
+        </div>
+        <div class="criteria-card card-red">
+            <div class="card-icon">🧠</div>
+            <div class="card-content">
+                <h2>Опыт и квалификация</h2>
+                <p>Сертификаты (профбухгалтер, налоговый консультант), знание МСФО, опыт прохождения налоговых проверок и судебных споров увеличивают зарплату на 20-40%. Главбухи с опытом автоматизации и внедрения 1С стоят дороже.</p>
+            </div>
+        </div>
+        <div class="criteria-card card-green">
+            <div class="card-icon">🌍</div>
+            <div class="card-content">
+                <h2>Дополнительные обязанности</h2>
+                <p>Если главбух также отвечает за управленческий учёт, бюджетирование, финансовый анализ, зарплата выше на 30-50%. Владение английским (для международных компаний) даёт прибавку до 40%.</p>
+            </div>
+        </div>
+        <div class="criteria-card card-orange">
+            <div class="card-icon">🏆</div>
+            <div class="card-content">
+                <h2>Карьерный рост и бонусы</h2>
+                <p>Годовые премии (от 30% до 100% оклада), опционы в крупных корпорациях, ДМС и другие льготы. Переход в финансовые директора может повысить доход в 2-3 раза.</p>
+            </div>
+        </div>
+
+        <div class="category-divider"><span>📊</span> <h2>Динамика зарплат</h2></div>
+        <div class="course-card">
+            <h2>Как менялись доходы за последние 3 года</h2>
+            <p>В 2024-2026 годах зарплаты главных бухгалтеров выросли в среднем на 18-22% из-за дефицита квалифицированных кадров и роста сложности законодательства. Особенно заметен рост в регионах – до 25-30%. Эксперты прогнозируют дальнейшее увеличение на 8-12% ежегодно.</p>
+            <p>Спрос на главбухов со знанием МСФО, 1С:ERP и автоматизации растёт быстрее предложения, что толкает зарплаты вверх.</p>
+        </div>
+        <div class="course-card">
+            <h2>Прогноз на 2027 год</h2>
+            <p>Ожидается дополнительный рост на 10-15% в связи с переходом на новые формы отчётности и усилением контроля со стороны ФНС. Компании готовы перекупать сильных главбухов, предлагая повышенные ставки.</p>
+        </div>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-logo">Главный бухгалтер | Рейтинг 2026</div>
+                <div class="footer-links">
+                    <a href="duties.html">Обязанности</a>
+                    <a href="salaries.html">Зарплаты</a>
+                    <a href="video.html">Видео</a>
+                    <a href="contacts.html">Контакты</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                © 2026 Независимый рейтинг курсов главного бухгалтера. Все права защищены.
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
